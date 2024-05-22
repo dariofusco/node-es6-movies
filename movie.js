@@ -2,11 +2,19 @@ const { reset } = require("nodemon");
 
 const movies = [
     {
-        title: "",
-        year: "",
-        genre: "",
-        rating: "",
-        type: ""
+        title: "Jaws",
+        year: 1975,
+        genre: "Drama",
+        rating: 8,
+        type: "film"
+    },
+    {
+        title: "Breaking Bad",
+        year: 2008,
+        genre: "Drama",
+        rating: 9.5,
+        type: "serie tv",
+        seasons: 5
     },
 ];
 
@@ -24,8 +32,8 @@ class Movie {
     }
 }
 
-const movie = new Movie("Jaws", 1975, "Drama", 8, "film").toString();
-console.log(movie);
+const movie = new Movie("Jaws", 1975, "Drama", 8, "film");
+console.log(movie.toString());
 
 class TvSerie extends Movie {
     constructor(title, year, genre, rating, type, seasons) {
@@ -38,5 +46,14 @@ class TvSerie extends Movie {
     }
 }
 
-const tvserie = new TvSerie("Breaking Bad", 2008, "Drama", 9.5, "serie tv", 5).toString();
-console.log(tvserie);
+const tvSerie = new TvSerie("Breaking Bad", 2008, "Drama", 9.5, "serie tv", 5);
+console.log(tvSerie.toString());
+
+const movieInstances = movies.map((obj) => {
+    if(obj.type == "film"){
+        return new Movie(obj.title, obj.year, obj.genre, obj.rating, obj.type)
+    }
+    return new TvSerie(obj.title, obj.year, obj.genre, obj.rating, obj.type, obj.seasons)
+})
+
+console.log(movieInstances);
