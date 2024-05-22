@@ -18,9 +18,13 @@ class Movie {
             this.rating = rating,
             this.type = type
     }
+
+    toString() {
+        console.log(this.title + " è un " + this.type + " di genere " + this.genre + ". " + "E' stato rilasciato nel " + this.year + " ed ha un voto di " + this.rating + ".");
+    }
 }
 
-const movie = new Movie("Jaws", 1975, "Drama", 8, "film");
+const movie = new Movie("Jaws", 1975, "Drama", 8, "film").toString();
 console.log(movie);
 
 class TvSerie extends Movie {
@@ -28,7 +32,11 @@ class TvSerie extends Movie {
             super(title, year, genre, rating, type),
             this.seasons = seasons
     }
+
+    toString() {
+        console.log(this.title + " è una " + this.type + " di genere " + this.genre + ". " + "La prima stagione è stata rilasciato nel " + this.year + " ed in totale sono state prodotte " + this.seasons + "stagioni. Ha un voto di " + this.rating + ".");
+    }
 }
 
-const tvserie = new TvSerie("Breaking Bad", 2008, "Drama", 9.5, "serie tv", 5);
+const tvserie = new TvSerie("Breaking Bad", 2008, "Drama", 9.5, "serie tv", 5).toString();
 console.log(tvserie);
