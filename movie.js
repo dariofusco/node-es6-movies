@@ -12,7 +12,7 @@ const movies = [
         title: "Breaking Bad",
         year: 2008,
         genre: "Drama",
-        rating: 9.5,
+        rating: 10,
         type: "serie tv",
         seasons: 5
     },
@@ -20,7 +20,7 @@ const movies = [
 
 class Movie {
     constructor(title, year, genre, rating, type) {
-            this.title = title,
+        this.title = title,
             this.year = year,
             this.genre = genre,
             this.rating = rating,
@@ -37,7 +37,7 @@ console.log(movie.toString());
 
 class TvSerie extends Movie {
     constructor(title, year, genre, rating, type, seasons) {
-            super(title, year, genre, rating, type),
+        super(title, year, genre, rating, type),
             this.seasons = seasons
     }
 
@@ -50,10 +50,23 @@ const tvSerie = new TvSerie("Breaking Bad", 2008, "Drama", 9.5, "serie tv", 5);
 console.log(tvSerie.toString());
 
 const movieInstances = movies.map((obj) => {
-    if(obj.type == "film"){
+    if (obj.type == "film") {
         return new Movie(obj.title, obj.year, obj.genre, obj.rating, obj.type)
     }
     return new TvSerie(obj.title, obj.year, obj.genre, obj.rating, obj.type, obj.seasons)
 })
 
 console.log(movieInstances);
+
+function averageRating(arr, genre) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].genre == genre) {
+            sum += arr[i].rating;
+        }
+    }
+    return sum / arr.length;
+}
+
+console.log(averageRating(movieInstances, "Drama"))
+
